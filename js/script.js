@@ -14,7 +14,7 @@ const questionAge = prompt("Quanti anni hai?(Sei pregato di inserire solo numeri
 
 
 /*Verifico che le due variabili contengano dei caratteri numerici*/
-if (!isNaN(questionKm) && !isNaN(questionAge)) {
+if (!isNaN(questionKm) && !isNaN(questionAge) && questionAge !== null && questionKm !== null) {
 
 /*Creo due variabili per convertire i numeri ottenuti dai prompt precedenti da tipo stringa a tipo numerico, così da poter eseguire tranquillamente tutte le operazioni matematiche*/
     const numberKm = parseFloat(questionKm);
@@ -23,9 +23,10 @@ if (!isNaN(questionKm) && !isNaN(questionAge)) {
 /*Creo la variabile per il prezzo finale senza darle ancora un valore poichè questo cambierà in base all'età inserita*/
     let numberPrice
 
-
+/*Applico lo sconto SE il soggetto è minorenne...*/
     if (numberAge<=17) {
         numberPrice = (numberKm * 0.21) * 0.8;
+        /*Creo questa variabile per arrotondare il numero a due decimali*/
         let numberPriceFixed = Math.round(numberPrice * 100) / 100;
         document.getElementById("cardInfo").innerHTML = `<ul class="fw-bold">
         <li class="list-group-item">Chilometri indicati: ${numberKm}</li>
@@ -35,6 +36,7 @@ if (!isNaN(questionKm) && !isNaN(questionAge)) {
         </ul>`;
     }
 
+/*...SE il soggetto è over 65...*/
     else if (numberAge>65) {
         numberPrice = (numberKm * 0.21) * 0.6;
         let numberPriceFixed = Math.round(numberPrice * 100) / 100;
@@ -46,6 +48,7 @@ if (!isNaN(questionKm) && !isNaN(questionAge)) {
         </ul>`
     }
 
+/*...altrimenti applico il prezzo standard...*/    
     else {
         numberPrice = numberKm * 0.21;
         let numberPriceFixed = Math.round(numberPrice * 100) / 100;
@@ -60,4 +63,3 @@ if (!isNaN(questionKm) && !isNaN(questionAge)) {
 else {
     document.getElementById("cardInfo").innerHTML = `<p class="text-danger fw-bold"> ATTENZIONE !! Hai inserito caratteri NON numerici nei prompt precedenti, aggiorna la pagina e inserisci le informazioni corrette </p>`
 }
-
