@@ -26,31 +26,34 @@ if (!isNaN(questionKm) && !isNaN(questionAge)) {
 
     if (numberAge<=17) {
         numberPrice = (numberKm * 0.21) * 0.8;
+        let numberPriceFixed = Math.round(numberPrice * 100) / 100;
         document.getElementById("cardInfo").innerHTML = `<ul class="fw-bold">
         <li class="list-group-item">Chilometri indicati: ${numberKm}</li>
         <li class="list-group-item">Età Passeggero: ${numberAge}</li>
         <li class="list-group-item">Sconto applicato: Minorenne (-20%)</li>
-        <li class="list-group-item">Prezzo finale: €${numberPrice}</li>
+        <li class="list-group-item">Prezzo finale: €${numberPriceFixed}</li>
         </ul>`;
     }
 
     else if (numberAge>65) {
         numberPrice = (numberKm * 0.21) * 0.6;
+        let numberPriceFixed = Math.round(numberPrice * 100) / 100;
         document.getElementById("cardInfo").innerHTML = `<ul class="fw-bold">
         <li class="list-group-item">Chilometri indicati: ${numberKm}</li>
         <li class="list-group-item">Età Passeggero: ${numberAge}</li>
         <li class="list-group-item">Sconto applicato: Over 65 (-40%)</li>
-        <li class="list-group-item">Prezzo finale: €${numberPrice}</li>
+        <li class="list-group-item">Prezzo finale: €${numberPriceFixed}</li>
         </ul>`
     }
 
     else {
         numberPrice = numberKm * 0.21;
+        let numberPriceFixed = Math.round(numberPrice * 100) / 100;
         document.getElementById("cardInfo").innerHTML = `<ul class="fw-bold">
         <li class="list-group-item">Chilometri indicati: ${numberKm}</li>
         <li class="list-group-item">Età Passeggero: ${numberAge}</li>
         <li class="list-group-item">Sconto applicato: Nessuno</li>
-        <li class="list-group-item">Prezzo finale: €${numberPrice}</li>
+        <li class="list-group-item">Prezzo finale: €${numberPriceFixed}</li>
         </ul>`
     }
 }
